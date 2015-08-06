@@ -14,8 +14,6 @@ from sklearn.cross_validation import StratifiedShuffleSplit
 from multiprocessing import Pool 
 from functools import partial
 from multiprocessing.pool import ThreadPool
-import pathos.multiprocessing as mp
-from jug import TaskGenerator,value
 
 
 def get_cifar_training_data(folder_path,label_file):
@@ -27,7 +25,7 @@ def get_cifar_training_data(folder_path,label_file):
         elems.append({'id':fileid, 'filename':filename, 'full_filename':full_filename})
     train_file_df=pd.DataFrame(elems) # give a file name -> ( label, full path)
     
-    train_labels = pd.read_csv('data/trainLabels.csv',dtype='object')
+    train_labels = pd.read_csv(label_file,dtype='object')
 
     train_file_df=pd.merge(train_labels,train_file_df,on=['id'])
 
@@ -147,7 +145,7 @@ def load_images(file_paths):
         yield load_image(img_path)
 def load_image(file_path):
     img=cv2.imread(file_path)
-    img = cv2.cvtColor(img, cv2.cv.CV_BGR2RGB)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     return img    
 
 #@TaskGenerator
