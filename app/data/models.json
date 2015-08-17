@@ -1,0 +1,54 @@
+{
+  "models": [
+    {
+      "name": "K-Nearest Neighbors Color",
+      "description": "Scikit implementation of K-Nearest Neighbors with k=5. Only uses color stats",
+      "cm_file": "data/cm/knn__color_cm.json",
+      "proba_file": ""
+    },
+    {
+      "name": "K-Nearest Neighbors Both",
+      "description": "Scikit implementation of K-Nearest Neighbors with k=5. Uses color stats and Histogram of gradient",
+      "cm_file": "data/cm/knn__color_hog_cm.json",
+      "proba_file": ""
+    },
+    {
+      "name": "GaussianNB Color",
+      "description": "Scikit implementation of Gaussian Naive Bayes. Only uses color ",
+
+      "cm_file": "data/cm/gnb__color_cm.json",
+      "proba_file": ""
+    },
+    {
+      "name": "GaussianNB Both",
+      "description": "Scikit implementation of Gaussian Naive Bayes. Uses color stats and Histogram of gradient",
+
+      "cm_file": "data/cm/gnb__color_hog_cm.json",
+      "proba_file": ""
+    },
+
+    {
+      "name": "RandomForestClassifier Color",
+      "description": "Scikit implementation of Random Forest Classifier with k=5 and color. Only uses color stats",
+
+      "cm_file": "data/cm/rf__color_cm.json",
+      "proba_file": ""
+    },
+
+    {
+      "name": "RandomForestClassifier Both",
+      "description": "Scikit implementation of Random Forest Classifier with k=5 and color. Uses color stats and Histogram of gradient",
+
+      "cm_file": "data/cm/rf__color_hog.json",
+      "proba_file": ""
+    },
+
+    {
+      "name": "LenetDNN",
+      "description": "Deep Learning Neural Network using NVIDIA digits",
+      "cm_file": "",
+      "proba_file": ""
+    }
+
+  ]
+}

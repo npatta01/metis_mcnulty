@@ -1,71 +1,115 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>d3 and Angular</title>
-    <meta name="description" content="d3 and Angular">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-</head>
-<body ng-app="myApp">
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">Resize the page or change the numbers to see the d3 re-render!</div>
-</div>
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <hr>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6 col-md-offset-3" ng-controller="DemoCtrl">
-        <span>{{title}}</span>
-        <d3-bars data="d3Data" label="name" on-click="d3OnClick(item)"></d3-bars>
-        <br>
-        <br>
-        <span>First Item</span>
-        <input type="text" ng-model="d3Data[0].score">
-        <br>
-        <span>Second Item</span>
-        <input type="text" ng-model="d3Data[1].score">
-        <br>
-        <span>Third Item</span>
-        <input type="text" ng-model="d3Data[2].score">
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        <hr>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6 col-md-offset-3" ng-controller="DemoCtrl2">
-        <span>{{title}}</span>
-        <d3-bars data="d3Data" label="title"></d3-bars>
-        <br>
-        <br>
-        <span>First Item</span>
-        <input type="text" ng-model="d3Data[0].score">
-        <br>
-        <span>Second Item</span>
-        <input type="text" ng-model="d3Data[1].score">
-        <br>
-        <span>Third Item</span>
-        <input type="text" ng-model="d3Data[2].score">
-    </div>
-</div>
+    <title>Angular Material - Starter App</title>
 
-<div class="row">
-    <div class="col-md-6 col-md-offset-3" ng-controller="ResultsCtrl">
-        <span>My confusion matrix</span>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="assets/app.css"/>
+    <meta name="viewport" content="initial-scale=1"/>
+
+</head>
+
+
+<body ng-app="myApp">
+
+<div layout="column" ng-controller="ResultsCtrl">
+
+    <md-toolbar layout="row">
+        <div class="md-toolbar-tools">
+            <md-button ng-click="toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+                <md-icon aria-label="Menu"
+                         md-svg-icon="https://s3-us-west-2.amazonaws.com/s.cdpn.io/68133/menu.svg"></md-icon>
+            </md-button>
+            <h1>Image Classification</h1>
+        </div>
+    </md-toolbar>
+
+
+    <md-content layout="column" layout-margin layout-fill layout-padding layout-align="center center">
+
+
+        <div flex="10"></div>
+
+        <h3 class="md-headline">Models</h3>
+
+        <p class="md-body-2">Choose a model below to explore (non) state of the art results</p>
+
+
+        <div layout="row">
+
+            <md-select placeholder="Model" ng-model="activeModel" ng-change="modelChanged()">
+                <md-option ng-repeat="model in models" ng-value="model">{{model.name}}</md-option>
+            </md-select>
+        </div>
+
+        <p class="md-body-1">{{activeModel.description}}</p>
 
         <div ng-if="matrixValues">
-            <d3-matrix data="matrixValues" labels="labels" on-click="d3OnClick(item)"></d3-matrix>
+            <div  flex>
+                <d3-matrix data="matrixValues" labels="labels" on-click="d3OnClick(item)"></d3-matrix>
 
+            </div>
+
+            <div flex="10"></div>
+
+            <div flex>
+                <p> Results for image</p>
+
+
+                <div layout="row" flex>
+                    <md-card class="card" data-ng-repeat="item in images">
+                        <img ng-src="{{item.url}}">
+                    </md-card>
+                </div>
+            </div>
+
+
+            <div flex>
+                <p>Probabilities</p>
+
+                <div>
+                    <md-list>
+                        <md-list-item class="md-3-line" ng-repeat="item in probabilities">
+                            <div class="md-list-item-text">
+
+                                <p><b>{{item.class}}</b>: {{ item.proba }}</p>
+                            </div>
+                        </md-list-item>
+
+                    </md-list>
+                </div>
+
+            </div>
+        </div>
+
+        <div ng-if="!matrixValues">
+
+            <p>No data is here for this model :(</p>
         </div>
 
 
-    </div>
+    </md-content>
+
 </div>
 
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+
+</div>
+
+
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/d3/d3.js"></script>
+<script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../bower_components/angular-material/angular-material.js"></script>
+<script src="../bower_components/angular-animate/angular-animate.js"></script>
+<script src="../bower_components/angular-aria/angular-aria.js"></script>
+
+
 <script src="scripts/app.js"></script>
 <script src="scripts/services/d3.js"></script>
 <script src="scripts/controllers/demoCtrl.js"></script>

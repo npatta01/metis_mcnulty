@@ -23,9 +23,9 @@
                         .domain([0, buckets - 1, d3.max(data, function (d) { return d.value; })])
                         .range(colors);
 
-                    var margin = {top: 50, right: 10, bottom: 100, left: 100};
-                    var width = 1000;
-                    var height = 800;
+                    var margin = {top: 100, right: 50, bottom: 50, left: 50};
+                    var width = 800;
+                    var height = 400;
 
                     var svg = d3.select(iElement[0])
                         .append("svg")
