@@ -1,0 +1,22 @@
+{
+  "name": "ds4_mcnulty",
+  "version": "0.0.0",
+  "authors": [
+    "Nidhin Pattaniyil <npatta01@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.4.3",
+    "d3": "~3.5.6",
+    "bootstrap": "~3.3.5",
+    "lodash": "~3.10.1",
+    "angular-bootstrap": "~0.13.2"
+  }
+}
